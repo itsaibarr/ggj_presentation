@@ -32,13 +32,10 @@
 
         body {
             background-color: var(--bg-void);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 40px;
             margin: 0;
-            min-height: 100vh;
-            padding: 40px 0;
+            height: 100vh;
+            overflow: hidden;
+            /* No scroll */
             color: #fff;
             font-family: var(--text-main);
             /* Retro Grid Background */
@@ -54,12 +51,48 @@
             background-color: var(--bg-panel);
             width: 1280px;
             height: 720px;
-            position: relative;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(var(--scale-factor, 1));
             overflow: hidden;
             border: 4px solid var(--neon-pink);
             box-shadow: 0 0 30px var(--neon-pink), inset 0 0 100px rgba(0, 0, 0, 0.8);
-            display: flex;
+            display: none;
+            /* Hidden by default */
             flex-direction: row;
+        }
+
+        .slide-container.active {
+            display: flex;
+            /* Show active slide */
+        }
+
+        /* Nav Controls */
+        .nav-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: var(--text-pixel);
+            font-size: 10px;
+            text-transform: uppercase;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: var(--neon-cyan);
+            color: #000;
         }
 
         /* Decor: Floating Icons Background */
@@ -537,6 +570,45 @@
         </div>
     </div>
 
+    <!-- SLIDE 4.5: ELINA KIM -->
+    <div class="slide-container" id="slide-elina">
+        <div class="bg-decor"><i class="fa-solid fa-crown bg-icon" style="left: 60%"></i></div>
+        <div class="sidebar-ui">
+            <div class="time-box">19:30</div>
+            <div class="level-indicator">BOSS</div>
+        </div>
+        <div class="scanlines"></div>
+        <div class="sponsor-bar">
+            <img src="sponsor logos/GCA_logo (1).png" alt="GCA">
+            <img src="sponsor logos/Group 15.png" alt="Astana Hub">
+            <img src="sponsor logos/GameDev Center белый (1).png" alt="GameDev Center">
+            <img src="sponsor logos/OGAMES.svg" alt="OGAMES">
+            <img src="sponsor logos/Mask group.png" alt="CIAQ">
+            <img src="sponsor logos/SHU (1).PNG" alt="SHU">
+            <img src="sponsor logos/cv_logo_white (1).png" alt="Creata Venture">
+            <img src="sponsor logos/Borsyq Games Белый (1).png" alt="Borsyq">
+            <img src="sponsor logos/145.jpg" alt="145" style="border-radius: 4px;">
+        </div>
+
+        <div class="main-view">
+            <div class="header-badge" style="background: var(--neon-pink);">PLAYER 4</div>
+            <div class="player-card" style="border-color: var(--neon-pink);">
+                <div class="avatar-frame"
+                    style="border-color: var(--neon-pink); box-shadow: 0 0 20px var(--neon-pink);">
+                    <img src="https://via.placeholder.com/300x350/111/ff00ff?text=ELINA" alt="Elina">
+                </div>
+                <div style="flex-grow: 1;">
+                    <h3 style="font-size: 60px; color: #fff; margin-bottom: 10px;">ELINA<br>KIM</h3>
+                    <div style="font-family: var(--text-mono); font-size: 20px; color: var(--neon-pink);">// HEAD OF
+                        GAMEDEV CENTER</div>
+                    <div
+                        style="margin-top: 10px; font-family: var(--text-pixel); font-size: 14px; color: #fff; background: var(--neon-cyan); display: inline-block; padding: 5px; color: #000;">
+                        ★ ORGANIZER ★</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- SLIDE 5: MANIFESTO (19:20-19:30) -->
     <div class="slide-container" id="slide5">
         <div class="bg-decor"><i class="fa-solid fa-map bg-icon" style="left: 10%"></i></div>
@@ -580,8 +652,11 @@
                     <div style="font-family: var(--text-pixel); font-size: 12px; margin-bottom: 10px; color: #aaa;">
                         POWERED BY</div>
                     <div
-                        style="font-size: 50px; font-weight: 900; color: var(--neon-lime); text-shadow: 0 0 20px var(--neon-lime);">
-                        ASTANA<br>HUB</div>
+                        style="display: flex; align-items: center; justify-content: center; gap: 20px; font-size: 50px; font-weight: 900; color: var(--neon-lime); text-shadow: 0 0 20px var(--neon-lime);">
+                        <img src="sponsor logos/Group 15.png" alt="Astana Hub"
+                            style="height: 80px; width: auto; margin-right: 15px;">
+                        ASTANA<br>HUB
+                    </div>
                     <div
                         style="margin-top: 20px; border: 1px dashed var(--neon-lime); padding: 10px; font-family: var(--text-mono);">
                         GAME DEV CENTER</div>
@@ -590,12 +665,40 @@
         </div>
     </div>
 
-    <!-- SLIDE 6: JURY INTRO (19:30-19:40) - FIXED LAYOUT -->
-    <div class="slide-container" id="slide6">
-        <div class="bg-decor"><i class="fa-solid fa-gavel bg-icon" style="left: 80%"></i></div>
+    <!-- ================= JURY SECTION ================= -->
+
+    <!-- JURY 0: INTRO -->
+    <div class="slide-container" id="jury-intro">
+        <div class="bg-decor"><i class="fa-solid fa-gavel bg-icon" style="left: 50%"></i></div>
         <div class="sidebar-ui">
-            <div class="time-box">19:30</div>
+            <div class="time-box">19:35</div>
             <div class="level-indicator">BOSSES</div>
+        </div>
+        <div class="scanlines"></div>
+        <div class="sponsor-bar">
+            <!-- Sponsor Logos -->
+            <img src="sponsor logos/GCA_logo (1).png" alt="GCA">
+            <img src="sponsor logos/Group 15.png" alt="Astana Hub">
+            <img src="sponsor logos/GameDev Center белый (1).png" alt="GameDev Center">
+            <img src="sponsor logos/OGAMES.svg" alt="OGAMES">
+            <img src="sponsor logos/Mask group.png" alt="CIAQ">
+            <img src="sponsor logos/SHU (1).PNG" alt="SHU">
+            <img src="sponsor logos/cv_logo_white (1).png" alt="Creata Venture">
+            <img src="sponsor logos/Borsyq Games Белый (1).png" alt="Borsyq">
+            <img src="sponsor logos/145.jpg" alt="145" style="border-radius: 4px;">
+        </div>
+        <div class="main-view">
+            <h1
+                style="font-size: 80px; text-align: center; color: var(--neon-lime); text-shadow: 0 0 20px var(--neon-lime);">
+                THE JURY<br><span style="font-size: 40px; color: #fff; -webkit-text-stroke: 0px;">(BOSS LEVEL)</span>
+            </h1>
+        </div>
+    </div>
+
+    <!-- JURY 1: ELIZAVETA (INFO) -->
+    <div class="slide-container" id="jury-1">
+        <div class="sidebar-ui">
+            <div class="level-indicator">BOSS 1</div>
         </div>
         <div class="scanlines"></div>
         <div class="sponsor-bar">
@@ -609,70 +712,205 @@
             <img src="sponsor logos/Borsyq Games Белый (1).png" alt="Borsyq">
             <img src="sponsor logos/145.jpg" alt="145" style="border-radius: 4px;">
         </div>
-
         <div class="main-view">
-            <h2 class="text-glow-lime">THE JURY (BOSS LEVEL)</h2>
-
-            <div style="display: flex; gap: 30px; width: 90%; margin-top: 20px; justify-content: center;">
-                <!-- Jury 1 -->
-                <div class="pixel-box"
-                    style="flex: 1; text-align: center; border-color: var(--neon-pink); background: rgba(20, 0, 20, 0.8);">
-                    <div style="position: relative; width: 120px; height: 120px; margin: 0 auto 15px;">
-                        <img src="https://via.placeholder.com/120"
-                            style="width: 100%; height: 100%; border-radius: 50%; border: 3px solid var(--neon-pink); object-fit: cover;">
-                        <div
-                            style="position: absolute; bottom: 0; right: 0; background: var(--neon-pink); color: #000; font-size: 10px; padding: 2px 5px; font-weight: bold;">
-                            LVL 99</div>
-                    </div>
-                    <h3 style="font-size: 20px; color: #fff; margin-bottom: 5px;">ELIZAVETA</h3>
-                    <div
-                        style="font-family: var(--text-mono); font-size: 14px; color: var(--neon-pink); margin-bottom: 15px;">
-                        CEO SOLID ROCK</div>
-                    <div
-                        style="background: rgba(255, 0, 255, 0.2); border: 1px solid var(--neon-pink); color: #fff; font-size: 10px; padding: 8px; font-family: var(--text-pixel);">
-                        <i class="fa-solid fa-play"></i> GREETING
+            <div class="player-card" style="border-color: var(--neon-pink);">
+                <div class="avatar-frame" style="border-color: var(--neon-pink);">
+                    <img src="https://via.placeholder.com/300x350/330033/ff00ff?text=ELIZAVETA" alt="Elizaveta">
+                </div>
+                <div style="flex-grow: 1;">
+                    <h3 style="font-size: 50px; color: #fff;">ELIZAVETA<br>MOROZOVA</h3>
+                    <div style="font-family: var(--text-mono); font-size: 20px; color: var(--neon-pink);">// CEO SOLID
+                        ROCK</div>
+                    <div style="margin-top: 15px; font-size: 14px; color: #ccc;">FORTNITE WORLD CREATOR & UE5 EXPERT
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
 
-                <!-- Jury 2 -->
-                <div class="pixel-box"
-                    style="flex: 1; text-align: center; border-color: var(--neon-cyan); background: rgba(0, 20, 20, 0.8);">
-                    <div style="position: relative; width: 120px; height: 120px; margin: 0 auto 15px;">
-                        <img src="https://via.placeholder.com/120"
-                            style="width: 100%; height: 100%; border-radius: 50%; border: 3px solid var(--neon-cyan); object-fit: cover;">
-                        <div
-                            style="position: absolute; bottom: 0; right: 0; background: var(--neon-cyan); color: #000; font-size: 10px; padding: 2px 5px; font-weight: bold;">
-                            LVL 99</div>
-                    </div>
-                    <h3 style="font-size: 20px; color: #fff; margin-bottom: 5px;">AKMAL</h3>
-                    <div
-                        style="font-family: var(--text-mono); font-size: 14px; color: var(--neon-cyan); margin-bottom: 15px;">
+    <!-- JURY 1: ELIZAVETA (VIDEO) -->
+    <div class="slide-container" id="jury-1-video">
+        <div class="sidebar-ui">
+            <div class="level-indicator">MSG</div>
+        </div>
+        <div class="scanlines"></div>
+        <div class="main-view">
+            <div class="pixel-box"
+                style="width: 800px; height: 450px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #000; border-color: var(--neon-pink);">
+                <i class="fa-solid fa-play" style="font-size: 80px; color: var(--neon-pink); opacity: 0.8;"></i>
+                <div style="margin-top: 20px; font-family: var(--text-pixel); color: #fff;">VIDEO GREETING</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JURY 2: AKMAL (INFO) -->
+    <div class="slide-container" id="jury-2">
+        <div class="sidebar-ui">
+            <div class="level-indicator">BOSS 2</div>
+        </div>
+        <div class="scanlines"></div>
+        <div class="sponsor-bar">
+            <img src="sponsor logos/GCA_logo (1).png" alt="GCA">
+            <img src="sponsor logos/Group 15.png" alt="Astana Hub">
+            <img src="sponsor logos/GameDev Center белый (1).png" alt="GameDev Center">
+            <img src="sponsor logos/OGAMES.svg" alt="OGAMES">
+            <img src="sponsor logos/Mask group.png" alt="CIAQ">
+            <img src="sponsor logos/SHU (1).PNG" alt="SHU">
+            <img src="sponsor logos/cv_logo_white (1).png" alt="Creata Venture">
+            <img src="sponsor logos/Borsyq Games Белый (1).png" alt="Borsyq">
+            <img src="sponsor logos/145.jpg" alt="145" style="border-radius: 4px;">
+        </div>
+        <div class="main-view">
+            <div class="player-card" style="border-color: var(--neon-cyan);">
+                <div class="avatar-frame" style="border-color: var(--neon-cyan);">
+                    <img src="https://via.placeholder.com/300x350/003333/00ffff?text=AKMAL" alt="Akmal">
+                </div>
+                <div style="flex-grow: 1;">
+                    <h3 style="font-size: 50px; color: #fff;">AKMAL<br>SALIKHOV</h3>
+                    <div style="font-family: var(--text-mono); font-size: 20px; color: var(--neon-cyan);">// FOUNDER
                         EAST GAMES</div>
-                    <div
-                        style="background: rgba(0, 255, 255, 0.2); border: 1px solid var(--neon-cyan); color: #fff; font-size: 10px; padding: 8px; font-family: var(--text-pixel);">
-                        <i class="fa-solid fa-play"></i> GREETING
-                    </div>
+                    <div style="margin-top: 15px; font-size: 14px; color: #ccc;">UZBEKISTAN GAMEDEV LEADER</div>
                 </div>
+            </div>
+        </div>
+    </div>
 
-                <!-- Jury 3 -->
-                <div class="pixel-box"
-                    style="flex: 1; text-align: center; border-color: var(--neon-lime); background: rgba(20, 20, 0, 0.8);">
-                    <div style="position: relative; width: 120px; height: 120px; margin: 0 auto 15px;">
-                        <img src="https://via.placeholder.com/120"
-                            style="width: 100%; height: 100%; border-radius: 50%; border: 3px solid var(--neon-lime); object-fit: cover;">
-                        <div
-                            style="position: absolute; bottom: 0; right: 0; background: var(--neon-lime); color: #000; font-size: 10px; padding: 2px 5px; font-weight: bold;">
-                            LVL 99</div>
-                    </div>
-                    <h3 style="font-size: 20px; color: #fff; margin-bottom: 5px;">GRIGORY</h3>
-                    <div
-                        style="font-family: var(--text-mono); font-size: 14px; color: var(--neon-lime); margin-bottom: 15px;">
-                        TECH MANAGER</div>
-                    <div
-                        style="background: rgba(57, 255, 20, 0.2); border: 1px solid var(--neon-lime); color: #fff; font-size: 10px; padding: 8px; font-family: var(--text-pixel);">
-                        <i class="fa-solid fa-play"></i> GREETING
-                    </div>
+    <!-- JURY 2: AKMAL (VIDEO) -->
+    <div class="slide-container" id="jury-2-video">
+        <div class="sidebar-ui">
+            <div class="level-indicator">MSG</div>
+        </div>
+        <div class="scanlines"></div>
+        <div class="main-view">
+            <div class="pixel-box"
+                style="width: 800px; height: 450px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #000; border-color: var(--neon-cyan);">
+                <i class="fa-solid fa-play" style="font-size: 80px; color: var(--neon-cyan); opacity: 0.8;"></i>
+                <div style="margin-top: 20px; font-family: var(--text-pixel); color: #fff;">VIDEO GREETING</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JURY 3: GRIGORY (INFO) -->
+    <div class="slide-container" id="jury-3">
+        <div class="sidebar-ui">
+            <div class="level-indicator">BOSS 3</div>
+        </div>
+        <div class="scanlines"></div>
+        <div class="sponsor-bar">
+            <img src="sponsor logos/GCA_logo (1).png" alt="GCA">
+            <img src="sponsor logos/Group 15.png" alt="Astana Hub">
+            <img src="sponsor logos/GameDev Center белый (1).png" alt="GameDev Center">
+            <img src="sponsor logos/OGAMES.svg" alt="OGAMES">
+            <img src="sponsor logos/Mask group.png" alt="CIAQ">
+            <img src="sponsor logos/SHU (1).PNG" alt="SHU">
+            <img src="sponsor logos/cv_logo_white (1).png" alt="Creata Venture">
+            <img src="sponsor logos/Borsyq Games Белый (1).png" alt="Borsyq">
+            <img src="sponsor logos/145.jpg" alt="145" style="border-radius: 4px;">
+        </div>
+        <div class="main-view">
+            <div class="player-card" style="border-color: var(--neon-lime);">
+                <div class="avatar-frame" style="border-color: var(--neon-lime);">
+                    <img src="https://via.placeholder.com/300x350/113300/39ff14?text=GRIGORY" alt="Grigory">
                 </div>
+                <div style="flex-grow: 1;">
+                    <h3 style="font-size: 50px; color: #fff;">GRIGORY<br>IVANOV</h3>
+                    <div style="font-family: var(--text-mono); font-size: 20px; color: var(--neon-lime);">// PROJECT
+                        MANAGER OMNIUM</div>
+                    <div style="margin-top: 15px; font-size: 14px; color: #ccc;">EX-MYTONA / TECH & DESIGN EXPERT</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JURY 3: GRIGORY (VIDEO) -->
+    <div class="slide-container" id="jury-3-video">
+        <div class="sidebar-ui">
+            <div class="level-indicator">MSG</div>
+        </div>
+        <div class="scanlines"></div>
+        <div class="main-view">
+            <div class="pixel-box"
+                style="width: 800px; height: 450px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #000; border-color: var(--neon-lime);">
+                <i class="fa-solid fa-play" style="font-size: 80px; color: var(--neon-lime); opacity: 0.8;"></i>
+                <div style="margin-top: 20px; font-family: var(--text-pixel); color: #fff;">VIDEO GREETING</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= VOLUNTEER SECTION ================= -->
+
+    <!-- VOL 1: FTC TEAMS -->
+    <div class="slide-container" id="vol-1">
+        <div class="sidebar-ui">
+            <div class="level-indicator">HELP</div>
+        </div>
+        <div class="scanlines"></div>
+        <div class="main-view">
+            <i class="fa-solid fa-heart text-glow-pink" style="font-size: 60px; margin-bottom: 30px;"></i>
+            <h2 style="font-size: 36px; color: #fff;">VOLUNTEERS (FTC TEAMS)</h2>
+            <div class="pixel-box"
+                style="border-color: var(--neon-pink); padding: 30px; width: 800px; text-align: left;">
+                <ul style="list-style: none; padding: 0; margin: 0; font-family: var(--text-mono); font-size: 24px;">
+                    <li style="margin-bottom: 15px;"><span style="color: var(--neon-pink);">></span> Neo Labs</li>
+                    <li style="margin-bottom: 15px;"><span style="color: var(--neon-pink);">></span> FoxSlide (RFMS)
+                    </li>
+                    <li style="margin-bottom: 15px;"><span style="color: var(--neon-pink);">></span> FizmatRobotics
+                        (RFMS)</li>
+                    <li><span style="color: var(--neon-pink);">></span> Xception (NIS)</li>
+                </ul>
+                <div
+                    style="margin-top: 20px; font-size: 14px; color: #aaa; text-align: center; border-top: 1px dashed var(--neon-pink); padding-top: 10px;">
+                    YOUR SUPPORT SQUAD IS ONLINE
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VOL 2: UPLOAD SUPPORT -->
+    <div class="slide-container" id="vol-2">
+        <div class="sidebar-ui">
+            <div class="level-indicator">HELP</div>
+        </div>
+        <div class="scanlines"></div>
+        <div class="main-view">
+            <i class="fa-solid fa-cloud-upload text-glow-cyan" style="font-size: 80px; margin-bottom: 30px;"></i>
+            <h2 style="font-size: 40px; color: #fff;">UPLOAD ISSUES?</h2>
+            <div class="pixel-box" style="border-color: var(--neon-cyan); padding: 40px;">
+                <h3 style="color: var(--neon-cyan); font-size: 30px;">TEXT ORGANIZERS</h3>
+                <p style="font-family: var(--text-mono);">WE WILL SEND GUIDE & HELP UPLOAD</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- VOL 3: COMMUNITY QUESTION -->
+    <div class="slide-container" id="vol-3">
+        <div class="sidebar-ui">
+            <div class="level-indicator">CHAT</div>
+        </div>
+        <div class="scanlines"></div>
+        <div class="main-view">
+            <i class="fa-solid fa-comments text-glow-lime" style="font-size: 80px; margin-bottom: 30px;"></i>
+            <h2 style="font-size: 40px; color: #fff;">DON'T BE SHY</h2>
+            <div class="pixel-box" style="border-color: var(--neon-lime); padding: 40px;">
+                <h3 style="color: var(--neon-lime); font-size: 30px;">ASK QUESTIONS</h3>
+                <p style="font-family: var(--text-mono);">COMMUNITY IS YOUR POWER</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- VOL 4: HUBS -->
+    <div class="slide-container" id="vol-4">
+        <div class="sidebar-ui">
+            <div class="level-indicator">ZONE</div>
+        </div>
+        <div class="scanlines"></div>
+        <div class="main-view">
+            <i class="fa-solid fa-building text-glow-yellow"
+                style="font-size: 80px; color: var(--neon-yellow); margin-bottom: 30px;"></i>
+            <h2 style="font-size: 40px; color: #fff;">REGIONAL HUBS</h2>
+            <div class="pixel-box" style="border-color: var(--neon-yellow); padding: 40px;">
+                <h3 style="color: var(--neon-yellow); font-size: 30px;">COWORKING OPEN</h3>
+                <p style="font-family: var(--text-mono);">ASTANA HUB & REGIONS WAITING FOR YOU</p>
             </div>
         </div>
     </div>
@@ -706,37 +944,41 @@
                 <div
                     style="position: absolute; top: 20px; left: 0; width: 100%; height: 10px; background: #333; border: 1px solid #fff;">
                 </div>
-                <!-- Progress Fill -->
-                <div
-                    style="position: absolute; top: 20px; left: 0; width: 5%; height: 10px; background: var(--neon-lime); box-shadow: 0 0 10px var(--neon-lime);">
-                </div>
 
-                <!-- Point 1 -->
-                <div style="text-align: center; position: relative; z-index: 1;">
+                <!-- Point 1: Start -->
+                <div style="text-align: center; position: relative; z-index: 1; flex: 1;">
                     <div
                         style="width: 50px; height: 50px; background: var(--neon-lime); border: 4px solid #000; box-shadow: 0 0 0 2px var(--neon-lime); margin: 0 auto 15px;">
                     </div>
                     <div style="font-family: var(--text-pixel); color: var(--neon-lime); font-size: 12px;">START</div>
-                    <div style="font-family: var(--text-mono); font-size: 14px;">TODAY</div>
+                    <div style="font-family: var(--text-mono); font-size: 14px;">JAN 26</div>
                 </div>
 
-                <!-- Point 2 -->
-                <div style="text-align: center; position: relative; z-index: 1;">
+                <!-- Point 2: Upload -->
+                <div style="text-align: center; position: relative; z-index: 1; flex: 1;">
                     <div
-                        style="width: 50px; height: 50px; background: #000; border: 4px solid #fff; box-shadow: 0 0 0 2px #fff; margin: 0 auto 15px;">
+                        style="width: 40px; height: 40px; background: #000; border: 4px solid #fff; box-shadow: 0 0 0 2px #fff; margin: 0 auto 15px;">
                     </div>
-                    <div style="font-family: var(--text-pixel); color: #fff; font-size: 12px;">UPLOAD</div>
+                    <div style="font-family: var(--text-pixel); color: #fff; font-size: 12px;">SITE OPEN</div>
                     <div style="font-family: var(--text-mono); font-size: 14px;">JAN 31</div>
                 </div>
 
-                <!-- Point 3 -->
-                <div style="text-align: center; position: relative; z-index: 1;">
+                <!-- Point 3: Judging -->
+                <div style="text-align: center; position: relative; z-index: 1; flex: 1;">
                     <div
-                        style="width: 50px; height: 50px; background: #000; border: 4px solid var(--neon-pink); box-shadow: 0 0 0 2px var(--neon-pink); margin: 0 auto 15px; animation: blink 1s infinite;">
+                        style="width: 40px; height: 40px; background: #000; border: 4px solid var(--neon-pink); box-shadow: 0 0 0 2px var(--neon-pink); margin: 0 auto 15px;">
                     </div>
-                    <div style="font-family: var(--text-pixel); color: var(--neon-pink); font-size: 12px;">DEADLINE
+                    <div style="font-family: var(--text-pixel); color: var(--neon-pink); font-size: 12px;">JUDGING</div>
+                    <div style="font-family: var(--text-mono); font-size: 14px;">FEB 1-15</div>
+                </div>
+
+                <!-- Point 4: Final -->
+                <div style="text-align: center; position: relative; z-index: 1; flex: 1;">
+                    <div
+                        style="width: 50px; height: 50px; background: var(--neon-cyan); border: 4px solid #000; box-shadow: 0 0 0 2px var(--neon-cyan); margin: 0 auto 15px; animation: blink 2s infinite;">
                     </div>
-                    <div style="font-family: var(--text-mono); font-size: 14px;">FEB 01</div>
+                    <div style="font-family: var(--text-pixel); color: var(--neon-cyan); font-size: 12px;">FINAL</div>
+                    <div style="font-family: var(--text-mono); font-size: 14px;">FEB 16</div>
                 </div>
             </div>
         </div>
@@ -765,7 +1007,7 @@
             <h2 class="text-glow-cyan">PRIZE POOL (LOOT)</h2>
 
             <div
-                style="border: 4px solid var(--neon-yellow); padding: 30px; background: rgba(0,0,0,0.7); width: 80%; text-align: center; box-shadow: 0 0 40px rgba(255, 240, 31, 0.2);">
+                style="border: 4px solid var(--neon-yellow); padding: 20px; background: rgba(0,0,0,0.7); width: 80%; text-align: center; box-shadow: 0 0 40px rgba(255, 240, 31, 0.2); margin-bottom: 30px;">
                 <div style="font-family: var(--text-mono); color: #aaa; font-size: 18px;">TOTAL CREDITS</div>
                 <div
                     style="font-family: var(--text-pixel); font-size: 80px; color: var(--neon-yellow); text-shadow: 5px 5px 0 #b8860b;">
@@ -773,28 +1015,40 @@
                 <div style="font-family: var(--text-mono); color: var(--neon-yellow); font-size: 24px;">KZT</div>
             </div>
 
-            <div class="arcade-grid" style="margin-top: 30px;">
+            <div style="display: flex; gap: 20px; width: 90%; justify-content: center;">
+                <!-- 2nd Place -->
                 <div
-                    style="background: rgba(0, 242, 254, 0.1); padding: 15px; border-left: 4px solid var(--neon-cyan);">
-                    <div style="color: var(--neon-cyan); font-weight: bold;">BUSINESS VISION</div>
-                    <div style="font-size: 24px; font-weight: 900;">100,000 KZT</div>
-                    <div style="font-size: 12px; font-family: var(--text-mono);">by Creata Venture</div>
+                    style="flex: 1; border: 2px solid #C0C0C0; background: rgba(192, 192, 192, 0.1); padding: 20px; text-align: center; transform: translateY(20px);">
+                    <div style="font-family: var(--text-pixel); color: #C0C0C0; font-size: 20px; margin-bottom: 10px;">
+                        2ND PLACE</div>
+                    <div style="font-size: 30px; font-weight: 900; color: #fff;">180,000</div>
                 </div>
+
+                <!-- 1st Place -->
                 <div
-                    style="background: rgba(57, 255, 20, 0.1); padding: 15px; border-left: 4px solid var(--neon-lime);">
-                    <div style="color: var(--neon-lime); font-weight: bold;">TRUE INDIE STORY</div>
-                    <div style="font-size: 24px; font-weight: 900;">50,000 KZT</div>
-                    <div style="font-size: 12px; font-family: var(--text-mono);">by GCA / GDC</div>
+                    style="flex: 1.2; border: 4px solid #FFD700; background: rgba(255, 215, 0, 0.1); padding: 20px; text-align: center; box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);">
+                    <div style="font-family: var(--text-pixel); color: #FFD700; font-size: 30px; margin-bottom: 10px;">
+                        1ST PLACE</div>
+                    <div style="font-size: 40px; font-weight: 900; color: #fff;">300,000</div>
+                </div>
+
+                <!-- 3rd Place -->
+                <div
+                    style="flex: 1; border: 2px solid #CD7F32; background: rgba(205, 127, 50, 0.1); padding: 20px; text-align: center; transform: translateY(20px);">
+                    <div style="font-family: var(--text-pixel); color: #CD7F32; font-size: 20px; margin-bottom: 10px;">
+                        3RD PLACE</div>
+                    <div style="font-size: 30px; font-weight: 900; color: #fff;">120,000</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- SLIDE 9: INFRASTRUCTURE & VOLUNTEERS -->
-    <div class="slide-container" id="slide9">
-        <div class="bg-decor"><i class="fa-solid fa-headset bg-icon" style="left: 30%"></i></div>
+    <!-- ================= NOMINATIONS ================= -->
+
+    <!-- NOMINATION 1: CREATA VENTURE -->
+    <div class="slide-container" id="nom-1">
         <div class="sidebar-ui">
-            <div class="level-indicator">SUPPORT</div>
+            <div class="level-indicator">BONUS</div>
         </div>
         <div class="scanlines"></div>
         <div class="sponsor-bar">
@@ -808,61 +1062,234 @@
             <img src="sponsor logos/Borsyq Games Белый (1).png" alt="Borsyq">
             <img src="sponsor logos/145.jpg" alt="145" style="border-radius: 4px;">
         </div>
-
         <div class="main-view">
-            <h2 style="color: #fff;">SUPPORT CLASS (NPCs)</h2>
+            <!-- Sponsor Logo Large -->
+            <img src="sponsor logos/cv_logo_white (1).png" alt="Creata Venture"
+                style="height: 80px; margin-bottom: 30px;">
 
-            <div style="display: flex; gap: 40px; width: 90%;">
-                <div class="pixel-box" style="flex: 1; border-color: var(--neon-pink);">
-                    <i class="fa-solid fa-heart text-glow-pink" style="font-size: 50px; margin-bottom: 20px;"></i>
-                    <h3>VOLUNTEERS</h3>
-                    <p style="font-family: var(--text-mono); color: #aaa;">PROVIDED BY</p>
-                    <div style="font-size: 30px; font-weight: 900; color: var(--neon-pink);">FTS NIS</div>
+            <div class="pixel-box" style="width: 800px; text-align: center; border-color: var(--neon-cyan);">
+                <div
+                    style="font-family: var(--text-pixel); color: var(--neon-cyan); font-size: 24px; margin-bottom: 10px;">
+                    NOMINATION</div>
+                <h2 style="font-size: 60px; color: #fff; margin: 10px 0;">OUT OF BOX</h2>
+                <div style="font-size: 40px; font-weight: 900; color: var(--neon-yellow);">100,000 KZT</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOMINATION 2: GCA / GDC -->
+    <div class="slide-container" id="nom-2">
+        <div class="sidebar-ui">
+            <div class="level-indicator">BONUS</div>
+        </div>
+        <div class="scanlines"></div>
+        <div class="sponsor-bar">
+            <img src="sponsor logos/GCA_logo (1).png" alt="GCA">
+            <img src="sponsor logos/Group 15.png" alt="Astana Hub">
+            <img src="sponsor logos/GameDev Center белый (1).png" alt="GameDev Center">
+            <img src="sponsor logos/OGAMES.svg" alt="OGAMES">
+            <img src="sponsor logos/Mask group.png" alt="CIAQ">
+            <img src="sponsor logos/SHU (1).PNG" alt="SHU">
+            <img src="sponsor logos/cv_logo_white (1).png" alt="Creata Venture">
+            <img src="sponsor logos/Borsyq Games Белый (1).png" alt="Borsyq">
+            <img src="sponsor logos/145.jpg" alt="145" style="border-radius: 4px;">
+        </div>
+        <div class="main-view">
+            <div style="display: flex; gap: 30px; margin-bottom: 30px;">
+                <img src="sponsor logos/GCA_logo (1).png" alt="GCA" style="height: 80px;">
+                <img src="sponsor logos/GameDev Center белый (1).png" alt="GDC" style="height: 80px;">
+            </div>
+
+            <div class="pixel-box" style="width: 800px; text-align: center; border-color: var(--neon-lime);">
+                <div
+                    style="font-family: var(--text-pixel); color: var(--neon-lime); font-size: 24px; margin-bottom: 10px;">
+                    NOMINATION</div>
+                <h2 style="font-size: 60px; color: #fff; margin: 10px 0;">TRUE INDIE STORY</h2>
+                <div style="font-family: var(--text-mono); font-size: 16px; color: #ccc; margin-bottom: 20px;">
+                    DOCU-VIDEO CHALLENGE</div>
+                <div style="font-size: 40px; font-weight: 900; color: var(--neon-yellow);">50,000 KZT</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOMINATION 3: COLIZEUM -->
+    <div class="slide-container" id="nom-3">
+        <div class="sidebar-ui">
+            <div class="level-indicator">BONUS</div>
+        </div>
+        <div class="scanlines"></div>
+        <div class="sponsor-bar">
+            <img src="sponsor logos/GCA_logo (1).png" alt="GCA">
+            <img src="sponsor logos/Group 15.png" alt="Astana Hub">
+            <img src="sponsor logos/GameDev Center белый (1).png" alt="GameDev Center">
+            <img src="sponsor logos/OGAMES.svg" alt="OGAMES">
+            <img src="sponsor logos/Mask group.png" alt="CIAQ">
+            <img src="sponsor logos/SHU (1).PNG" alt="SHU">
+            <img src="sponsor logos/cv_logo_white (1).png" alt="Creata Venture">
+            <img src="sponsor logos/Borsyq Games Белый (1).png" alt="Borsyq">
+            <img src="sponsor logos/145.jpg" alt="145" style="border-radius: 4px;">
+        </div>
+        <div class="main-view">
+            <!-- Placeholder for Colizeum Logo -->
+            <div
+                style="background: #fff; color: #000; padding: 10px 20px; font-weight: 900; font-size: 30px; margin-bottom: 30px; transform: skewX(-10deg);">
+                COLIZEUM</div>
+
+            <div class="pixel-box" style="width: 800px; text-align: center; border-color: var(--neon-pink);">
+                <div
+                    style="font-family: var(--text-pixel); color: var(--neon-pink); font-size: 24px; margin-bottom: 10px;">
+                    AUDIENCE CHOICE</div>
+                <h2 style="font-size: 60px; color: #fff; margin: 10px 0;">ASTANA FAVORITE</h2>
+                <div style="font-size: 40px; font-weight: 900; color: var(--neon-yellow);">60,000 KZT</div>
+                <div style="font-family: var(--text-mono); font-size: 16px; color: #fff;">IN CERTIFICATES</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CLOSING INFO (FEB 16) -->
+    <div class="slide-container" id="slide-closing">
+        <div class="bg-decor"><i class="fa-solid fa-flag-checkered bg-icon" style="left: 50%; color: #fff;"></i></div>
+        <div class="sidebar-ui">
+            <div class="level-indicator">FINAL</div>
+        </div>
+        <div class="scanlines"></div>
+        <div class="sponsor-bar">
+            <img src="sponsor logos/GCA_logo (1).png" alt="GCA">
+            <img src="sponsor logos/Group 15.png" alt="Astana Hub">
+            <img src="sponsor logos/GameDev Center белый (1).png" alt="GameDev Center">
+            <img src="sponsor logos/OGAMES.svg" alt="OGAMES">
+            <img src="sponsor logos/Mask group.png" alt="CIAQ">
+            <img src="sponsor logos/SHU (1).PNG" alt="SHU">
+            <img src="sponsor logos/cv_logo_white (1).png" alt="Creata Venture">
+            <img src="sponsor logos/Borsyq Games Белый (1).png" alt="Borsyq">
+            <img src="sponsor logos/145.jpg" alt="145" style="border-radius: 4px;">
+        </div>
+        <div class="main-view">
+            <div style="font-family: var(--text-pixel); color: var(--neon-lime); font-size: 20px; margin-bottom: 20px;">
+                SAVE THE DATE</div>
+            <h1 style="font-size: 80px; color: #fff; text-shadow: 0 0 20px var(--neon-lime);">FEB 16</h1>
+            <div style="display: flex; gap: 40px; margin-top: 50px;">
+                <div class="pixel-box" style="border-color: var(--neon-yellow);">
+                    <i class="fa-solid fa-trophy"
+                        style="font-size: 40px; color: var(--neon-yellow); margin-bottom: 10px;"></i>
+                    <div>AWARDS</div>
                 </div>
-
-                <div class="pixel-box" style="flex: 1; border-color: var(--neon-cyan);">
-                    <i class="fa-solid fa-server text-glow-cyan" style="font-size: 50px; margin-bottom: 20px;"></i>
-                    <h3>HUBS</h3>
-                    <p style="font-family: var(--text-mono); color: #aaa;">REGIONAL SERVERS</p>
-                    <div style="font-size: 30px; font-weight: 900; color: var(--neon-cyan);">COWORKING</div>
+                <div class="pixel-box" style="border-color: var(--neon-pink);">
+                    <i class="fa-solid fa-shirt"
+                        style="font-size: 40px; color: var(--neon-pink); margin-bottom: 10px;"></i>
+                    <div>MERCH</div>
+                </div>
+                <div class="pixel-box" style="border-color: var(--neon-cyan);">
+                    <i class="fa-solid fa-certificate"
+                        style="font-size: 40px; color: var(--neon-cyan); margin-bottom: 10px;"></i>
+                    <div>CERTIFICATES</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- SLIDE 10: THEME REVEAL (19:55-20:20) -->
-    <div class="slide-container" id="slide10" style="background: #000;">
-        <div class="scanlines"></div>
-        <div class="sponsor-bar">
-            <img src="sponsor logos/GCA_logo (1).png" alt="GCA">
-            <img src="sponsor logos/Group 15.png" alt="Astana Hub">
-            <img src="sponsor logos/GameDev Center белый (1).png" alt="GameDev Center">
-            <img src="sponsor logos/OGAMES.svg" alt="OGAMES">
-            <img src="sponsor logos/Mask group.png" alt="CIAQ">
-            <img src="sponsor logos/SHU (1).PNG" alt="SHU">
-            <img src="sponsor logos/cv_logo_white (1).png" alt="Creata Venture">
-            <img src="sponsor logos/Borsyq Games Белый (1).png" alt="Borsyq">
-            <img src="sponsor logos/145.jpg" alt="145" style="border-radius: 4px;">
-        </div>
+    <!-- ================= THEME SECTION ================= -->
+
+    <!-- THEME 1: SECRET CONDITION INTRO -->
+    <div class="slide-container" id="secret-intro">
         <div class="sidebar-ui">
             <div class="time-box">19:55</div>
             <div class="level-indicator">SECRET</div>
         </div>
+        <div class="scanlines"></div>
+        <div class="sponsor-bar">
+            <img src="sponsor logos/GCA_logo (1).png" alt="GCA">
+            <img src="sponsor logos/Group 15.png" alt="Astana Hub">
+            <img src="sponsor logos/GameDev Center белый (1).png" alt="GameDev Center">
+            <img src="sponsor logos/OGAMES.svg" alt="OGAMES">
+            <img src="sponsor logos/Mask group.png" alt="CIAQ">
+            <img src="sponsor logos/SHU (1).PNG" alt="SHU">
+            <img src="sponsor logos/cv_logo_white (1).png" alt="Creata Venture">
+            <img src="sponsor logos/Borsyq Games Белый (1).png" alt="Borsyq">
+            <img src="sponsor logos/145.jpg" alt="145" style="border-radius: 4px;">
+        </div>
+        <div class="main-view">
+            <i class="fa-solid fa-user-secret text-glow-pink" style="font-size: 80px; margin-bottom: 30px;"></i>
+            <h2 style="font-size: 50px; color: #fff;">ADDITIONAL CONDITION</h2>
+            <div class="pixel-box" style="border-color: var(--neon-pink);">
+                <span style="color: var(--neon-pink); font-family: var(--text-mono);">FROM ORGANIZERS</span>
+            </div>
+        </div>
+    </div>
 
+    <!-- THEME 2: SECRET CONDITION REVEAL -->
+    <div class="slide-container" id="secret-reveal" style="background: #100;">
+        <div class="sidebar-ui">
+            <div class="level-indicator">SECRET</div>
+        </div>
+        <div class="scanlines"></div>
+        <div class="main-view">
+            <h2 class="text-glow-pink">SECRET CONDITION</h2>
+            <div
+                style="border: 4px dashed var(--neon-pink); padding: 40px; background: rgba(0,0,0,0.8); width: 80%; text-align: center;">
+                <p style="font-family: var(--text-mono); font-size: 24px; color: #fff; line-height: 1.5;">
+                    [ INSERT SECRET CONDITION TEXT HERE ]
+                </p>
+                <div style="margin-top: 20px; color: var(--neon-pink); font-size: 14px;">REQUIRED FOR MAIN PRIZE</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- THEME 3: GLOBAL THEME INTRO -->
+    <div class="slide-container" id="global-intro">
+        <div class="sidebar-ui">
+            <div class="time-box">20:00</div>
+            <div class="level-indicator">WORLD</div>
+        </div>
+        <div class="scanlines"></div>
+        <div class="sponsor-bar">
+            <img src="sponsor logos/GCA_logo (1).png" alt="GCA">
+            <img src="sponsor logos/Group 15.png" alt="Astana Hub">
+            <img src="sponsor logos/GameDev Center белый (1).png" alt="GameDev Center">
+            <img src="sponsor logos/OGAMES.svg" alt="OGAMES">
+            <img src="sponsor logos/Mask group.png" alt="CIAQ">
+            <img src="sponsor logos/SHU (1).PNG" alt="SHU">
+            <img src="sponsor logos/cv_logo_white (1).png" alt="Creata Venture">
+            <img src="sponsor logos/Borsyq Games Белый (1).png" alt="Borsyq">
+            <img src="sponsor logos/145.jpg" alt="145" style="border-radius: 4px;">
+        </div>
+        <div class="main-view">
+            <i class="fa-solid fa-globe text-glow-cyan"
+                style="font-size: 80px; margin-bottom: 30px; animation: spin 10s infinite linear;"></i>
+            <h2 style="font-size: 50px; color: #fff;">GLOBAL THEME</h2>
+            <div class="pixel-box" style="border-color: var(--neon-cyan);">
+                <span style="color: var(--neon-cyan); font-family: var(--text-mono);">WORLDWIDE REVEAL</span>
+            </div>
+        </div>
+        <style>
+            @keyframes spin {
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+        </style>
+    </div>
+
+    <!-- THEME 4: GLOBAL THEME REVEAL (VIDEO) -->
+    <div class="slide-container" id="global-reveal" style="background: #000;">
+        <div class="scanlines"></div>
+        <div class="sidebar-ui">
+            <div class="level-indicator">THEME</div>
+        </div>
         <div class="main-view" style="justify-content: center;">
             <div
                 style="position: absolute; width: 100%; height: 100%; background: repeating-linear-gradient(45deg, #111, #111 10px, #222 10px, #222 20px); opacity: 0.5; z-index: 0;">
             </div>
 
             <div
-                style="z-index: 10; text-align: center; border: 10px solid var(--neon-pink); padding: 60px; background: #000; box-shadow: 0 0 50px var(--neon-pink);">
+                style="z-index: 10; text-align: center; border: 10px solid var(--neon-lime); padding: 60px; background: #000; box-shadow: 0 0 50px var(--neon-lime);">
                 <div
-                    style="font-family: var(--text-pixel); color: var(--neon-cyan); font-size: 20px; margin-bottom: 20px;">
+                    style="font-family: var(--text-pixel); color: var(--neon-lime); font-size: 20px; margin-bottom: 20px;">
                     GLOBAL KEYNOTE</div>
                 <h1 style="font-size: 80px; margin: 0; color: #fff; animation: glitch 0.5s infinite;">THEME REVEAL</h1>
-                <div style="margin-top: 40px; font-family: var(--text-mono); color: var(--neon-lime);">
+                <div style="margin-top: 40px; font-family: var(--text-mono); color: var(--neon-cyan);">
                     > DECRYPTING SIGNAL...<br>
-                    > ADDITIONAL CHALLENGE: LOCKED
+                    > VIDEO PLAYING...
                 </div>
             </div>
         </div>
@@ -937,6 +1364,64 @@
         </div>
     </div>
 
+    </div>
+
+    <!-- NAVIGATION CONTROLS -->
+    <div class="nav-controls">
+        <button class="nav-btn" onclick="prevSlide()">
+            < PREV</button>
+                <button class="nav-btn" onclick="nextSlide()">NEXT ></button>
+    </div>
+
+    <script>
+        // PRESENTATION LOGIC
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide-container');
+
+        function showSlide(index) {
+            // Bounds check
+            if (index < 0) index = 0;
+            if (index >= slides.length) index = slides.length - 1;
+
+            currentSlide = index;
+
+            // Remove active class from all
+            slides.forEach(slide => slide.classList.remove('active'));
+
+            // Add active class to current
+            slides[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Keyboard Navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ' || e.key === 'Enter') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                prevSlide();
+            }
+        });
+
+        // Initialize
+        function resizeScreen() {
+            const baseW = 1280;
+            const baseH = 720;
+            const margin = 0.95; // 5% margin
+            const scale = Math.min(window.innerWidth / baseW, window.innerHeight / baseH) * margin;
+            document.documentElement.style.setProperty('--scale-factor', scale);
+        }
+
+        window.addEventListener('resize', resizeScreen);
+        resizeScreen(); // Initial call
+        showSlide(0);
+    </script>
 </body>
 
 </html>
