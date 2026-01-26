@@ -471,22 +471,6 @@
         </style>
     </div>
 
-    <!-- SLIDE 1.5: OPENING VIDEO -->
-    <div class="slide-container" id="slide-opening-video">
-        <div class="sidebar-ui">
-            <div class="time-box">19:00</div>
-            <div class="level-indicator">OPENING</div>
-        </div>
-        <div class="scanlines"></div>
-        <div class="main-view">
-            <div class="pixel-box"
-                style="width: 800px; height: 450px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #000; border-color: var(--neon-yellow); padding: 5px;">
-                <video src="Videos/Global Game Jam 2026 Keynote and Theme Reveal (2).mp4" controls
-                    style="width: 100%; height: 100%; object-fit: contain;"></video>
-            </div>
-        </div>
-    </div>
-
     <!-- SLIDE 2: DAVID TUGANOV (19:05-19:15) -->
     <div class="slide-container" id="slide2">
         <div class="bg-decor"><i class="fa-solid fa-rocket bg-icon" style="left: 70%"></i></div>
@@ -1319,16 +1303,10 @@
                 style="position: absolute; width: 100%; height: 100%; background: repeating-linear-gradient(45deg, #111, #111 10px, #222 10px, #222 20px); opacity: 0.5; z-index: 0;">
             </div>
 
-            <div
-                style="z-index: 10; text-align: center; border: 10px solid var(--neon-lime); padding: 60px; background: #000; box-shadow: 0 0 50px var(--neon-lime);">
-                <div
-                    style="font-family: var(--text-pixel); color: var(--neon-lime); font-size: 20px; margin-bottom: 20px;">
-                    GLOBAL KEYNOTE</div>
-                <h1 style="font-size: 80px; margin: 0; color: #fff; animation: glitch 0.5s infinite;">THEME REVEAL</h1>
-                <div style="margin-top: 40px; font-family: var(--text-mono); color: var(--neon-cyan);">
-                    > DECRYPTING SIGNAL...<br>
-                    > VIDEO PLAYING...
-                </div>
+            <div class="pixel-box"
+                style="width: 800px; height: 450px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #000; border-color: var(--neon-lime); padding: 5px; z-index: 10;">
+                <video src="Videos/Global Game Jam 2026 Keynote and Theme Reveal (2).mp4" controls
+                    style="width: 100%; height: 100%; object-fit: contain;"></video>
             </div>
         </div>
         <style>
@@ -1399,12 +1377,31 @@
             <h2 class="text-glow-pink">SECRET CONDITION</h2>
             <div
                 style="border: 4px dashed var(--neon-pink); padding: 40px; background: rgba(0,0,0,0.8); width: 80%; text-align: center;">
-                <p style="font-family: var(--text-mono); font-size: 24px; color: #fff; line-height: 1.5;">
+                <p
+                    style="font-family: var(--text-pixel); font-size: 60px; color: #fff; line-height: 1.2; text-shadow: 0 0 20px var(--neon-pink), 0 0 40px var(--neon-pink); animation: pulse-text 2s infinite;">
                     RULES SWITCH
                 </p>
                 <div style="margin-top: 20px; color: var(--neon-pink); font-size: 14px;">REQUIRED FOR MAIN PRIZE</div>
             </div>
         </div>
+        <style>
+            @keyframes pulse-text {
+                0% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+
+                50% {
+                    opacity: 0.8;
+                    transform: scale(1.05);
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+        </style>
     </div>
 
     <!-- SLIDE 11: START & PIZZA (20:20+) -->
