@@ -1,0 +1,56 @@
+﻿commit d88607104f38d43f8f2ddafc0b7e4a5a142bdb25
+Author: itsaibarr <cametame001@gmail.com>
+Date:   Mon Jan 26 16:50:45 2026 +0500
+
+    feat: Add Global Game Jam Keynote video slide and compress video asset
+
+ ... Game Jam 2026 Keynote and Theme Reveal (2).mp4 | Bin 204381054 -> 9439013 bytes
+ compression_log.txt                                |  35 +++++++++++++++++++++
+ 2 files changed, 35 insertions(+)
+
+commit 887776c1d1c90ba483a08c4cdfbdef15ad7d3cd7
+Author: itsaibarr <cametame001@gmail.com>
+Date:   Mon Jan 26 16:20:12 2026 +0500
+
+    feat: Add opening video slide to `index.html` and include the Global Game Jam 2026 Keynote and Theme Reveal video.
+
+ ...l Game Jam 2026 Keynote and Theme Reveal (2).mp4 | Bin 0 -> 204381054 bytes
+ index.html                                          |  16 ++++++++++++++++
+ 2 files changed, 16 insertions(+)
+
+commit 2506126bb43e4ab57534bb714f43f18b319f630d
+Author: itsaibarr <cametame001@gmail.com>
+Date:   Mon Jan 26 16:14:34 2026 +0500
+
+    feat: update player avatar image and replace secret condition placeholder with "RULES SWITCH"
+
+ Photos/photo_2026-01-26_16-08-16.jpg | Bin 0 -> 144051 bytes
+ index.html                           |   4 ++--
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+commit 3649c9be10e8bde0170f79aecd99d062a44a6aae
+Author: itsaibarr <cametame001@gmail.com>
+Date:   Mon Jan 26 15:54:19 2026 +0500
+
+    feat: Add comprehensive print styles for presentation slides, integrate new Global Game Jam logo, and update speaker profile images.
+
+ Photos/photo_2026-01-26_15-48-51.jpg               | Bin 0 -> 54542 bytes
+ Videos/IMG_8994.MOV                                | Bin 0 -> 31910504 bytes
+ Videos/video_2026-01-26_15-15-42.mp4               | Bin 0 -> 20983232 bytes
+ index.html                                         | 110 +++++++++++++++------
+ speaker_logos/photo_2026-01-26_14-33-57.jpg        | Bin 0 -> 64922 bytes
+ ...0\274 \320\264\320\266\320\265\320\274 (1).png" | Bin 0 -> 1381673 bytes
+ 6 files changed, 79 insertions(+), 31 deletions(-)
+
+commit 1268df0a0a37b752898716eeac4c16318f8ab360
+Author: itsaibarr <cametame001@gmail.com>
+Date:   Mon Jan 26 14:26:31 2026 +0500
+
+    feat: Integrate speaker logos for Solid Rock and East Games, and replace the Colizeum sponsor text with its image.
+
+ index.html                                              |  10 +++++++---
+ ... games \320\261\320\265\320\273\321\213\320\271.png" | Bin 0 -> 48668 bytes
+ speaker_logos/Logo_omnium_w.png                         | Bin 0 -> 16227 bytes
+ speaker_logos/Solid Rock.png                            | Bin 0 -> 32704 bytes
+ sponsor logos/Colizeum.png                              | Bin 0 -> 85632 bytes
+ 5 files changed, 7 insertions(+), 3 deletions(-)
