@@ -491,6 +491,26 @@
             }
         }
 
+        /* MAP STYLES */
+        .kz-map-wrap { position: relative; width: 100%; max-width: 1050px; }
+        .kz-outline { fill: rgba(0,255,255,0.06); stroke: var(--neon-cyan); stroke-width: 2; filter: drop-shadow(0 0 8px var(--neon-cyan)); }
+        .city-dot { fill: var(--neon-pink); filter: drop-shadow(0 0 6px var(--neon-pink)); }
+        .city-dot-hq { fill: var(--neon-lime); filter: drop-shadow(0 0 10px var(--neon-lime)); }
+        .city-label { font-family: var(--text-pixel); font-size: 8px; fill: #fff; text-anchor: middle; }
+        .city-count { font-family: var(--text-pixel); font-size: 10px; fill: var(--neon-yellow); text-anchor: middle; font-weight: bold; }
+        .foreign-marker { stroke: var(--neon-yellow); stroke-width: 1; stroke-dasharray: 4 2; fill: none; }
+
+        /* LOGO INTERSTITIAL */
+        .logo-center { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; gap: 30px; }
+        .logo-center img { max-height: 200px; width: auto; }
+        .logo-center .org-label { font-family: var(--text-pixel); font-size: 18px; letter-spacing: 6px; text-shadow: 0 0 15px currentColor; }
+
+        /* NOMINATION TITLE */
+        .nom-title-center { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; gap: 20px; }
+        .nom-title-center .nom-tag { font-family: var(--text-mono); font-size: 18px; color: #aaa; letter-spacing: 6px; text-transform: uppercase; }
+        .nom-title-center .nom-name { font-family: var(--text-pixel); font-size: 36px; color: #fff; line-height: 1.6; text-shadow: 4px 4px 0 var(--neon-pink), 0 0 30px var(--neon-pink); animation: pulse-text 3s infinite; }
+        .nom-title-center .nom-icon { font-size: 80px; margin-bottom: 10px; }
+
         /* PRINT STYLES */
         @media print {
             @page {
@@ -624,7 +644,7 @@
         </div>
     </div>
 
-    <!-- ================= SLIDE 3: GEOGRAPHY (17:35) ================= -->
+    <!-- ================= SLIDE 3: GEOGRAPHY — KZ MAP (17:35) ================= -->
     <div class="slide-container" id="slide-geo">
         <div class="bg-decor"><i class="fa-solid fa-map bg-icon" style="left: 10%"></i></div>
         <div class="sidebar-ui">
@@ -646,34 +666,100 @@
             <img src="sponsor logos/Дизайн без названия (4).png" alt="Sponsor" style="border-radius: 4px;">
         </div>
 
+        <div class="main-view" style="padding: 80px 40px 30px 40px;">
+            <div class="kz-map-wrap" style="position: relative;">
+                <img src="kaz_final.svg" alt="Kazakhstan Map" style="width: 100%; height: auto; max-width: 1050px;">
+                <!-- City markers overlay -->
+                <svg viewBox="0 0 793 435" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                    <!-- ASTANA — 67 -->
+                    <g class="city-marker">
+                        <circle cx="425" cy="132" r="24" class="city-dot-hq" opacity="0.3"/>
+                        <circle cx="425" cy="132" r="14" class="city-dot-hq"/>
+                        <text x="425" y="108" class="city-count" style="font-size:14px; fill: var(--neon-lime);">67</text>
+                        <text x="425" y="158" class="city-label" style="font-size:10px;">АСТАНА ★</text>
+                    </g>
+                    <!-- ALMATY — 8 -->
+                    <g class="city-marker">
+                        <circle cx="610" cy="305" r="10" class="city-dot"/>
+                        <text x="610" y="293" class="city-count">8</text>
+                        <text x="610" y="325" class="city-label">АЛМАТЫ</text>
+                    </g>
+                    <!-- KYZYLORDA — 7 -->
+                    <g class="city-marker">
+                        <circle cx="375" cy="295" r="9" class="city-dot"/>
+                        <text x="375" y="283" class="city-count">7</text>
+                        <text x="375" y="315" class="city-label">КЫЗЫЛОРДА</text>
+                    </g>
+                    <!-- SEMEY — 5 -->
+                    <g class="city-marker">
+                        <circle cx="660" cy="135" r="8" class="city-dot"/>
+                        <text x="660" y="123" class="city-count">5</text>
+                        <text x="660" y="155" class="city-label">СЕМЕЙ</text>
+                    </g>
+                    <!-- TARAZ — 2 -->
+                    <g class="city-marker">
+                        <circle cx="490" cy="318" r="6" class="city-dot"/>
+                        <text x="490" y="308" class="city-count">2</text>
+                        <text x="490" y="336" class="city-label">ТАРАЗ</text>
+                    </g>
+                    <!-- AKTOBE — 1 -->
+                    <g class="city-marker">
+                        <circle cx="185" cy="152" r="5" class="city-dot"/>
+                        <text x="185" y="142" class="city-count">1</text>
+                        <text x="185" y="170" class="city-label">АКТОБЕ</text>
+                    </g>
+                    <!-- KARAGANDA — 1 -->
+                    <g class="city-marker">
+                        <circle cx="478" cy="188" r="5" class="city-dot"/>
+                        <text x="478" y="178" class="city-count">1</text>
+                        <text x="478" y="206" class="city-label">КАРАГАНДА</text>
+                    </g>
+                    <!-- PETROPAVLOVSK — 1 -->
+                    <g class="city-marker">
+                        <circle cx="435" cy="48" r="5" class="city-dot"/>
+                        <text x="435" y="38" class="city-count">1</text>
+                        <text x="435" y="66" class="city-label">ПЕТРОПАВЛОВСК</text>
+                    </g>
+                    <!-- STEPNOGORSK — 1 -->
+                    <g class="city-marker">
+                        <circle cx="415" cy="102" r="5" class="city-dot"/>
+                        <text x="455" y="100" class="city-count" style="text-anchor:start;">1</text>
+                        <text x="455" y="112" class="city-label" style="text-anchor:start;">СТЕПНОГОРСК</text>
+                    </g>
+
+                    <!-- Foreign: ORENBURG (Russia) — 1 -->
+                    <circle cx="130" cy="85" r="4" fill="var(--neon-yellow)" opacity="0.7"/>
+                    <line x1="130" y1="85" x2="95" y2="68" class="foreign-marker"/>
+                    <text x="130" y="76" class="city-label" style="fill: var(--neon-yellow); font-size: 7px;">ОРЕНБУРГ 🇷🇺 1</text>
+
+                    <!-- Foreign: WÜRZBURG (Germany) — 1 -->
+                    <text x="30" y="30" class="city-label" style="fill: var(--neon-yellow); font-size: 7px; text-anchor: start;">← ВЮРЦБУРГ 🇩🇪 1</text>
+                </svg>
+            </div>
+            <div style="display: flex; gap: 30px; margin-top: 8px; font-family: var(--text-mono); font-size: 13px;">
+                <span><span style="color: var(--neon-lime);">●</span> HQ — АСТАНА</span>
+                <span><span style="color: var(--neon-pink);">●</span> РЕГИОНЫ</span>
+                <span><span style="color: var(--neon-yellow);">●</span> МЕЖДУНАРОДНЫЕ</span>
+                <span style="color: #666;">НЕ УКАЗАН: 2</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= LOGO: ASTANA HUB ================= -->
+    <div class="slide-container" id="logo-astanahub">
+        <div class="bg-decor"><i class="fa-solid fa-building bg-icon" style="left: 40%"></i></div>
+        <div class="sidebar-ui">
+            <div class="time-box">17:40</div>
+            <div class="level-indicator">INTRO</div>
+        </div>
+        <div class="scanlines"></div>
+        <div class="sponsor-bar">
+            <img src="sponsor logos/GCA_logo (1).png" alt="GCA"><img src="sponsor logos/Group 15.png" alt="Astana Hub"><img src="sponsor logos/GameDev Center белый (1).png" alt="GameDev Center"><img src="sponsor logos/OGAMES.svg" alt="OGAMES"><img src="sponsor logos/Логотип глобал гейм джем (1).png" alt="GGJ"><img src="sponsor logos/Mask group.png" alt="CIAQ"><img src="sponsor logos/SHU (1).PNG" alt="SHU"><img src="sponsor logos/cv_logo_white (1).png" alt="Creata Venture"><img src="sponsor logos/Borsyq Games Белый (1).png" alt="Borsyq"><img src="sponsor logos/145.jpg" alt="145" style="border-radius: 4px;"><img src="sponsor logos/Дизайн без названия (4).png" alt="Sponsor" style="border-radius: 4px;">
+        </div>
         <div class="main-view">
-            <h2 class="text-glow-cyan">HUB & SPOKE MODEL</h2>
-
-            <div class="arcade-grid" style="align-items: center;">
-                <div style="background: rgba(0,0,0,0.5); padding: 30px; border: 2px solid var(--neon-pink); box-shadow: 5px 5px 0 #fff;">
-                    <i class="fa-solid fa-earth-asia" style="font-size: 60px; color: var(--neon-pink); margin-bottom: 20px;"></i>
-                    <h3 style="font-size: 26px;">COVERAGE<br>MAP</h3>
-                    <div style="font-family: var(--text-pixel); font-size: 14px; margin-top: 20px; line-height: 2;">
-                        <span style="color: var(--neon-lime);">&#9733;</span> ASTANA (HQ)<br>
-                        <span style="color: var(--neon-cyan)">></span> PETROPAVLOVSK<br>
-                        <span style="color: var(--neon-cyan)">></span> ALMATY<br>
-                        <span style="color: var(--neon-cyan)">></span> REGIONAL HUBS
-                    </div>
-                </div>
-
-                <div style="text-align: center;">
-                    <div style="font-family: var(--text-pixel); font-size: 12px; margin-bottom: 10px; color: #aaa;">
-                        POWERED BY</div>
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; font-size: 50px; font-weight: 900; color: var(--neon-lime); text-shadow: 0 0 20px var(--neon-lime);">
-                        <img src="sponsor logos/Group 15.png" alt="Astana Hub"
-                            style="height: 80px; width: auto; margin-right: 15px;">
-                        ASTANA<br>HUB
-                    </div>
-                    <div style="margin-top: 20px; border: 1px dashed var(--neon-lime); padding: 10px; font-family: var(--text-mono);">
-                        GAME DEV CENTER</div>
-                    <div style="margin-top: 15px; font-family: var(--text-pixel); font-size: 10px; color: var(--neon-yellow);">
-                        SKO HUB SPOTLIGHT</div>
-                </div>
+            <div class="logo-center">
+                <img src="sponsor logos/Group 15.png" alt="Astana Hub" style="filter: drop-shadow(0 0 30px var(--neon-lime)); max-height: 250px;">
+                <div class="org-label" style="color: var(--neon-lime);">ASTANA HUB</div>
             </div>
         </div>
     </div>
@@ -714,6 +800,28 @@
                     <div style="margin-top: 10px; font-family: var(--text-pixel); font-size: 14px; color: #fff; background: var(--neon-lime); display: inline-block; padding: 5px; color: #000;">
                         ★ HOME OF STARTUPS ★</div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= LOGO: CIAQ / CREATA ================= -->
+    <div class="slide-container" id="logo-ciaq">
+        <div class="bg-decor"><i class="fa-solid fa-rocket bg-icon" style="left: 60%"></i></div>
+        <div class="sidebar-ui">
+            <div class="time-box">17:45</div>
+            <div class="level-indicator">INTRO</div>
+        </div>
+        <div class="scanlines"></div>
+        <div class="sponsor-bar">
+            <img src="sponsor logos/GCA_logo (1).png" alt="GCA"><img src="sponsor logos/Group 15.png" alt="Astana Hub"><img src="sponsor logos/GameDev Center белый (1).png" alt="GameDev Center"><img src="sponsor logos/OGAMES.svg" alt="OGAMES"><img src="sponsor logos/Логотип глобал гейм джем (1).png" alt="GGJ"><img src="sponsor logos/Mask group.png" alt="CIAQ"><img src="sponsor logos/SHU (1).PNG" alt="SHU"><img src="sponsor logos/cv_logo_white (1).png" alt="Creata Venture"><img src="sponsor logos/Borsyq Games Белый (1).png" alt="Borsyq"><img src="sponsor logos/145.jpg" alt="145" style="border-radius: 4px;"><img src="sponsor logos/Дизайн без названия (4).png" alt="Sponsor" style="border-radius: 4px;">
+        </div>
+        <div class="main-view">
+            <div class="logo-center">
+                <div style="display: flex; gap: 40px; align-items: center;">
+                    <img src="sponsor logos/Mask group.png" alt="CIAQ" style="filter: drop-shadow(0 0 20px var(--neon-pink)); max-height: 100px;">
+                    <img src="sponsor logos/cv_logo_white (1).png" alt="Creata" style="filter: drop-shadow(0 0 20px var(--neon-cyan)); max-height: 70px;">
+                </div>
+                <div class="org-label" style="color: var(--neon-pink);">CIAQ / CREATA VENTURES</div>
             </div>
         </div>
     </div>
@@ -770,6 +878,25 @@
         </div>
     </div>
 
+    <!-- ================= LOGO: GCA ================= -->
+    <div class="slide-container" id="logo-gca">
+        <div class="bg-decor"><i class="fa-solid fa-users bg-icon" style="left: 50%"></i></div>
+        <div class="sidebar-ui">
+            <div class="time-box">17:50</div>
+            <div class="level-indicator">INTRO</div>
+        </div>
+        <div class="scanlines"></div>
+        <div class="sponsor-bar">
+            <img src="sponsor logos/GCA_logo (1).png" alt="GCA"><img src="sponsor logos/Group 15.png" alt="Astana Hub"><img src="sponsor logos/GameDev Center белый (1).png" alt="GameDev Center"><img src="sponsor logos/OGAMES.svg" alt="OGAMES"><img src="sponsor logos/Логотип глобал гейм джем (1).png" alt="GGJ"><img src="sponsor logos/Mask group.png" alt="CIAQ"><img src="sponsor logos/SHU (1).PNG" alt="SHU"><img src="sponsor logos/cv_logo_white (1).png" alt="Creata Venture"><img src="sponsor logos/Borsyq Games Белый (1).png" alt="Borsyq"><img src="sponsor logos/145.jpg" alt="145" style="border-radius: 4px;"><img src="sponsor logos/Дизайн без названия (4).png" alt="Sponsor" style="border-radius: 4px;">
+        </div>
+        <div class="main-view">
+            <div class="logo-center">
+                <img src="sponsor logos/GCA_logo (1).png" alt="GCA" style="filter: drop-shadow(0 0 30px var(--neon-cyan)); max-height: 250px;">
+                <div class="org-label" style="color: var(--neon-cyan);">GAME COMMUNITY ALLIANCE</div>
+            </div>
+        </div>
+    </div>
+
     <!-- ================= SLIDE 6: MALIKA IGIBAYEVA (17:50) ================= -->
     <div class="slide-container" id="slide-malika">
         <div class="bg-decor"><i class="fa-solid fa-users bg-icon" style="left: 20%"></i></div>
@@ -818,6 +945,26 @@
         </div>
     </div>
 
+    <!-- ================= LOGO: OGAMES ================= -->
+    <div class="slide-container" id="logo-ogames">
+        <div class="bg-decor"><i class="fa-solid fa-star bg-icon" style="left: 50%"></i></div>
+        <div class="sidebar-ui">
+            <div class="time-box">17:55</div>
+            <div class="level-indicator">INTRO</div>
+        </div>
+        <div class="scanlines"></div>
+        <div class="sponsor-bar">
+            <img src="sponsor logos/GCA_logo (1).png" alt="GCA"><img src="sponsor logos/Group 15.png" alt="Astana Hub"><img src="sponsor logos/GameDev Center белый (1).png" alt="GameDev Center"><img src="sponsor logos/OGAMES.svg" alt="OGAMES"><img src="sponsor logos/Логотип глобал гейм джем (1).png" alt="GGJ"><img src="sponsor logos/Mask group.png" alt="CIAQ"><img src="sponsor logos/SHU (1).PNG" alt="SHU"><img src="sponsor logos/cv_logo_white (1).png" alt="Creata Venture"><img src="sponsor logos/Borsyq Games Белый (1).png" alt="Borsyq"><img src="sponsor logos/145.jpg" alt="145" style="border-radius: 4px;"><img src="sponsor logos/Дизайн без названия (4).png" alt="Sponsor" style="border-radius: 4px;">
+        </div>
+        <div class="main-view">
+            <div class="logo-center">
+                <img src="sponsor logos/OGAMES.svg" alt="OGAMES" style="filter: drop-shadow(0 0 30px var(--neon-yellow)); max-height: 400px; max-width: 800px;">
+                <div class="org-label" style="color: var(--neon-yellow);">OGAMES</div>
+                <div style="font-family: var(--text-pixel); font-size: 12px; color: var(--neon-pink); margin-top: -10px;">★ GENERAL SPONSOR ★</div>
+            </div>
+        </div>
+    </div>
+
     <!-- ================= SLIDE 7: ADIL TASIMOV (17:55) ================= -->
     <div class="slide-container" id="slide-adil">
         <div class="bg-decor"><i class="fa-solid fa-star bg-icon" style="left: 50%"></i></div>
@@ -858,84 +1005,130 @@
         </div>
     </div>
 
-    <!-- ================= SLIDE 8: JURY PANEL (18:00) ================= -->
-    <div class="slide-container" id="slide-jury">
-        <div class="bg-decor"><i class="fa-solid fa-gavel bg-icon" style="left: 50%"></i></div>
+    <!-- ================= JURY 1: ELIZAVETA MOROZOVA ================= -->
+    <div class="slide-container" id="jury-elizaveta">
+        <div class="bg-decor"><i class="fa-solid fa-gavel bg-icon" style="left: 30%"></i></div>
         <div class="sidebar-ui">
             <div class="time-box">18:00</div>
             <div class="level-indicator">BOSSES</div>
         </div>
         <div class="scanlines"></div>
         <div class="sponsor-bar">
-            <img src="sponsor logos/GCA_logo (1).png" alt="GCA">
-            <img src="sponsor logos/Group 15.png" alt="Astana Hub">
-            <img src="sponsor logos/GameDev Center белый (1).png" alt="GameDev Center">
-            <img src="sponsor logos/OGAMES.svg" alt="OGAMES">
-            <img src="sponsor logos/Логотип глобал гейм джем (1).png" alt="GGJ">
-            <img src="sponsor logos/Mask group.png" alt="CIAQ">
-            <img src="sponsor logos/SHU (1).PNG" alt="SHU">
-            <img src="sponsor logos/cv_logo_white (1).png" alt="Creata Venture">
-            <img src="sponsor logos/Borsyq Games Белый (1).png" alt="Borsyq">
-            <img src="sponsor logos/145.jpg" alt="145" style="border-radius: 4px;">
-            <img src="sponsor logos/Дизайн без названия (4).png" alt="Sponsor" style="border-radius: 4px;">
+            <img src="sponsor logos/GCA_logo (1).png" alt="GCA"><img src="sponsor logos/Group 15.png" alt="Astana Hub"><img src="sponsor logos/GameDev Center белый (1).png" alt="GameDev Center"><img src="sponsor logos/OGAMES.svg" alt="OGAMES"><img src="sponsor logos/Логотип глобал гейм джем (1).png" alt="GGJ"><img src="sponsor logos/Mask group.png" alt="CIAQ"><img src="sponsor logos/SHU (1).PNG" alt="SHU"><img src="sponsor logos/cv_logo_white (1).png" alt="Creata Venture"><img src="sponsor logos/Borsyq Games Белый (1).png" alt="Borsyq"><img src="sponsor logos/145.jpg" alt="145" style="border-radius: 4px;"><img src="sponsor logos/Дизайн без названия (4).png" alt="Sponsor" style="border-radius: 4px;">
         </div>
-
         <div class="main-view">
-            <h2 style="font-size: 36px; color: var(--neon-lime); text-shadow: 0 0 20px var(--neon-lime); margin-bottom: 30px;">
-                JURY PANEL</h2>
-
-            <div class="jury-grid">
-                <!-- Elizaveta - ZOOM -->
-                <div class="jury-card" style="border-color: var(--neon-pink);">
-                    <div class="jury-avatar" style="border-color: var(--neon-pink);">
-                        <img src="Photos/Елизавета Морозова Solid Rock.jpg" alt="Elizaveta">
-                    </div>
-                    <div>
-                        <h3 style="font-size: 22px; color: #fff;">ELIZAVETA MOROZOVA</h3>
-                        <div style="font-family: var(--text-mono); font-size: 14px; color: var(--neon-pink);">CEO SOLID ROCK</div>
-                        <div style="font-family: var(--text-pixel); font-size: 8px; color: var(--neon-cyan); margin-top: 5px;">
-                            <i class="fa-solid fa-video"></i> ZOOM</div>
-                    </div>
+            <div class="header-badge" style="background: var(--neon-pink); color: #fff;">JUDGE 1</div>
+            <div class="player-card" style="border-color: var(--neon-pink);">
+                <div class="avatar-frame" style="border-color: var(--neon-pink); box-shadow: 0 0 20px var(--neon-pink);">
+                    <img src="Photos/Елизавета Морозова Solid Rock.jpg" alt="Elizaveta">
+                    <div style="position: absolute; bottom: 0; width: 100%; background: rgba(0,0,0,0.8); color: var(--neon-pink); text-align: center; font-family: var(--text-pixel); font-size: 10px; padding: 5px;">SOLID ROCK</div>
                 </div>
-
-                <!-- Akmal - ZOOM -->
-                <div class="jury-card" style="border-color: var(--neon-cyan);">
-                    <div class="jury-avatar" style="border-color: var(--neon-cyan);">
-                        <img src="Photos/Акмаль Саликов East Games.png" alt="Akmal" style="object-position: top;">
-                    </div>
-                    <div>
-                        <h3 style="font-size: 22px; color: #fff;">AKMAL SALIKHOV</h3>
-                        <div style="font-family: var(--text-mono); font-size: 14px; color: var(--neon-cyan);">FOUNDER EAST GAMES</div>
-                        <div style="font-family: var(--text-pixel); font-size: 8px; color: var(--neon-cyan); margin-top: 5px;">
-                            <i class="fa-solid fa-video"></i> ZOOM</div>
-                    </div>
+                <div style="flex-grow: 1;">
+                    <h3 style="font-size: 50px; color: #fff; margin-bottom: 10px;">ELIZAVETA<br>MOROZOVA</h3>
+                    <div style="font-family: var(--text-mono); font-size: 20px; color: var(--neon-pink);">// CEO SOLID ROCK</div>
+                    <div style="margin-top: 15px; font-family: var(--text-pixel); font-size: 12px; color: var(--neon-cyan);"><i class="fa-solid fa-video"></i> ZOOM CONNECTION</div>
                 </div>
+            </div>
+        </div>
+    </div>
 
-                <!-- Grigory - IN HALL -->
-                <div class="jury-card" style="border-color: var(--neon-lime);">
-                    <div class="jury-avatar" style="border-color: var(--neon-lime);">
-                        <img src="Photos/Григорий Иванов.jpg" alt="Grigory" style="object-position: 25% center;">
-                    </div>
-                    <div>
-                        <h3 style="font-size: 22px; color: #fff;">GRIGORY IVANOV</h3>
-                        <div style="font-family: var(--text-mono); font-size: 14px; color: var(--neon-lime);">PM OMNIUM / EX-MYTONA</div>
-                        <div style="font-family: var(--text-pixel); font-size: 8px; color: var(--neon-lime); margin-top: 5px;">
-                            <i class="fa-solid fa-location-dot"></i> IN HALL</div>
-                    </div>
+    <!-- ================= JURY 2: AKMAL SALIKHOV ================= -->
+    <div class="slide-container" id="jury-akmal">
+        <div class="bg-decor"><i class="fa-solid fa-gavel bg-icon" style="left: 70%"></i></div>
+        <div class="sidebar-ui">
+            <div class="time-box">18:00</div>
+            <div class="level-indicator">BOSSES</div>
+        </div>
+        <div class="scanlines"></div>
+        <div class="sponsor-bar">
+            <img src="sponsor logos/GCA_logo (1).png" alt="GCA"><img src="sponsor logos/Group 15.png" alt="Astana Hub"><img src="sponsor logos/GameDev Center белый (1).png" alt="GameDev Center"><img src="sponsor logos/OGAMES.svg" alt="OGAMES"><img src="sponsor logos/Логотип глобал гейм джем (1).png" alt="GGJ"><img src="sponsor logos/Mask group.png" alt="CIAQ"><img src="sponsor logos/SHU (1).PNG" alt="SHU"><img src="sponsor logos/cv_logo_white (1).png" alt="Creata Venture"><img src="sponsor logos/Borsyq Games Белый (1).png" alt="Borsyq"><img src="sponsor logos/145.jpg" alt="145" style="border-radius: 4px;"><img src="sponsor logos/Дизайн без названия (4).png" alt="Sponsor" style="border-radius: 4px;">
+        </div>
+        <div class="main-view">
+            <div class="header-badge" style="background: var(--neon-cyan); color: #000;">JUDGE 2</div>
+            <div class="player-card" style="border-color: var(--neon-cyan); flex-direction: row-reverse; clip-path: polygon(5% 0, 100% 0, 100% 100%, 0 100%, 0 15%);">
+                <div class="avatar-frame" style="border-color: var(--neon-cyan); box-shadow: 0 0 20px var(--neon-cyan);">
+                    <img src="Photos/Акмаль Саликов East Games.png" alt="Akmal" style="object-position: top;">
+                    <div style="position: absolute; bottom: 0; width: 100%; background: rgba(0,0,0,0.8); color: var(--neon-cyan); text-align: center; font-family: var(--text-pixel); font-size: 10px; padding: 5px;">EAST GAMES</div>
                 </div>
+                <div style="flex-grow: 1; text-align: right;">
+                    <h3 style="font-size: 50px; color: #fff; margin-bottom: 10px;">AKMAL<br>SALIKHOV</h3>
+                    <div style="font-family: var(--text-mono); font-size: 20px; color: var(--neon-cyan);">// FOUNDER EAST GAMES</div>
+                    <div style="margin-top: 15px; font-family: var(--text-pixel); font-size: 12px; color: var(--neon-cyan);"><i class="fa-solid fa-video"></i> ZOOM CONNECTION</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                <!-- Irakli - IN HALL -->
-                <div class="jury-card" style="border-color: var(--neon-yellow);">
-                    <div class="jury-avatar" style="border-color: var(--neon-yellow); display: flex; align-items: center; justify-content: center; background: #111;">
-                        <i class="fa-solid fa-user" style="font-size: 40px; color: var(--neon-yellow);"></i>
-                    </div>
-                    <div>
-                        <h3 style="font-size: 22px; color: #fff;">IRAKLI PETROV</h3>
-                        <div style="font-family: var(--text-mono); font-size: 14px; color: var(--neon-yellow);">GAME DESIGNER MYTONA</div>
-                        <div style="font-family: var(--text-pixel); font-size: 8px; color: var(--neon-lime); margin-top: 5px;">
-                            <i class="fa-solid fa-location-dot"></i> IN HALL</div>
-                    </div>
+    <!-- ================= JURY 3: GRIGORY IVANOV ================= -->
+    <div class="slide-container" id="jury-grigory">
+        <div class="bg-decor"><i class="fa-solid fa-gavel bg-icon" style="left: 40%"></i></div>
+        <div class="sidebar-ui">
+            <div class="time-box">18:00</div>
+            <div class="level-indicator">BOSSES</div>
+        </div>
+        <div class="scanlines"></div>
+        <div class="sponsor-bar">
+            <img src="sponsor logos/GCA_logo (1).png" alt="GCA"><img src="sponsor logos/Group 15.png" alt="Astana Hub"><img src="sponsor logos/GameDev Center белый (1).png" alt="GameDev Center"><img src="sponsor logos/OGAMES.svg" alt="OGAMES"><img src="sponsor logos/Логотип глобал гейм джем (1).png" alt="GGJ"><img src="sponsor logos/Mask group.png" alt="CIAQ"><img src="sponsor logos/SHU (1).PNG" alt="SHU"><img src="sponsor logos/cv_logo_white (1).png" alt="Creata Venture"><img src="sponsor logos/Borsyq Games Белый (1).png" alt="Borsyq"><img src="sponsor logos/145.jpg" alt="145" style="border-radius: 4px;"><img src="sponsor logos/Дизайн без названия (4).png" alt="Sponsor" style="border-radius: 4px;">
+        </div>
+        <div class="main-view">
+            <div class="header-badge" style="background: var(--neon-lime); color: #000;">JUDGE 3</div>
+            <div class="player-card" style="border-color: var(--neon-lime);">
+                <div class="avatar-frame" style="border-color: var(--neon-lime); box-shadow: 0 0 20px var(--neon-lime);">
+                    <img src="Photos/Григорий Иванов.jpg" alt="Grigory" style="object-position: 25% center;">
+                    <div style="position: absolute; bottom: 0; width: 100%; background: rgba(0,0,0,0.8); color: var(--neon-lime); text-align: center; font-family: var(--text-pixel); font-size: 10px; padding: 5px;">OMNIUM</div>
                 </div>
+                <div style="flex-grow: 1;">
+                    <h3 style="font-size: 50px; color: #fff; margin-bottom: 10px;">GRIGORY<br>IVANOV</h3>
+                    <div style="font-family: var(--text-mono); font-size: 20px; color: var(--neon-lime);">// PM OMNIUM / EX-MYTONA</div>
+                    <div style="margin-top: 15px; font-family: var(--text-pixel); font-size: 12px; color: var(--neon-lime);"><i class="fa-solid fa-location-dot"></i> IN HALL</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= JURY 4: IRAKLI PETROV ================= -->
+    <div class="slide-container" id="jury-irakli">
+        <div class="bg-decor"><i class="fa-solid fa-gavel bg-icon" style="left: 60%"></i></div>
+        <div class="sidebar-ui">
+            <div class="time-box">18:00</div>
+            <div class="level-indicator">BOSSES</div>
+        </div>
+        <div class="scanlines"></div>
+        <div class="sponsor-bar">
+            <img src="sponsor logos/GCA_logo (1).png" alt="GCA"><img src="sponsor logos/Group 15.png" alt="Astana Hub"><img src="sponsor logos/GameDev Center белый (1).png" alt="GameDev Center"><img src="sponsor logos/OGAMES.svg" alt="OGAMES"><img src="sponsor logos/Логотип глобал гейм джем (1).png" alt="GGJ"><img src="sponsor logos/Mask group.png" alt="CIAQ"><img src="sponsor logos/SHU (1).PNG" alt="SHU"><img src="sponsor logos/cv_logo_white (1).png" alt="Creata Venture"><img src="sponsor logos/Borsyq Games Белый (1).png" alt="Borsyq"><img src="sponsor logos/145.jpg" alt="145" style="border-radius: 4px;"><img src="sponsor logos/Дизайн без названия (4).png" alt="Sponsor" style="border-radius: 4px;">
+        </div>
+        <div class="main-view">
+            <div class="header-badge" style="background: var(--neon-yellow); color: #000;">JUDGE 4</div>
+            <div class="player-card" style="border-color: var(--neon-yellow); flex-direction: row-reverse; clip-path: polygon(5% 0, 100% 0, 100% 100%, 0 100%, 0 15%);">
+                <div class="avatar-frame" style="border-color: var(--neon-yellow); box-shadow: 0 0 20px var(--neon-yellow);">
+                    <img src="Photos/photo_2026-02-16_04-33-40.jpg" alt="Irakli">
+                    <div style="position: absolute; bottom: 0; width: 100%; background: rgba(0,0,0,0.8); color: var(--neon-yellow); text-align: center; font-family: var(--text-pixel); font-size: 10px; padding: 5px;">MYTONA</div>
+                </div>
+                <div style="flex-grow: 1; text-align: right;">
+                    <h3 style="font-size: 50px; color: #fff; margin-bottom: 10px;">IRAKLI<br>PETROV</h3>
+                    <div style="font-family: var(--text-mono); font-size: 20px; color: var(--neon-yellow);">// GAME DESIGNER MYTONA</div>
+                    <div style="margin-top: 15px; font-family: var(--text-pixel); font-size: 12px; color: var(--neon-lime);"><i class="fa-solid fa-location-dot"></i> IN HALL</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= TITLE: COLIZEUM NOMINATION ================= -->
+    <div class="slide-container" id="title-colizeum">
+        <div class="bg-decor"><i class="fa-solid fa-heart bg-icon" style="left: 50%"></i></div>
+        <div class="sidebar-ui">
+            <div class="time-box">18:10</div>
+            <div class="level-indicator">BONUS</div>
+        </div>
+        <div class="scanlines"></div>
+        <div class="sponsor-bar">
+            <img src="sponsor logos/GCA_logo (1).png" alt="GCA"><img src="sponsor logos/Group 15.png" alt="Astana Hub"><img src="sponsor logos/GameDev Center белый (1).png" alt="GameDev Center"><img src="sponsor logos/OGAMES.svg" alt="OGAMES"><img src="sponsor logos/Логотип глобал гейм джем (1).png" alt="GGJ"><img src="sponsor logos/Mask group.png" alt="CIAQ"><img src="sponsor logos/SHU (1).PNG" alt="SHU"><img src="sponsor logos/cv_logo_white (1).png" alt="Creata Venture"><img src="sponsor logos/Borsyq Games Белый (1).png" alt="Borsyq"><img src="sponsor logos/145.jpg" alt="145" style="border-radius: 4px;"><img src="sponsor logos/Дизайн без названия (4).png" alt="Sponsor" style="border-radius: 4px;">
+        </div>
+        <div class="main-view">
+            <div class="nom-title-center">
+                <div class="nom-icon">🏆</div>
+                <div class="nom-tag">NOMINATION</div>
+                <div class="nom-name">ASTANA<br>FAVORITE</div>
             </div>
         </div>
     </div>
@@ -977,6 +1170,26 @@
             <div class="winner-slot" style="border-color: var(--neon-pink);">
                 <div class="winner-label">WINNER</div>
                 <div class="winner-name" style="text-shadow: 0 0 20px var(--neon-pink);">[ TEAM NAME ]</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= TITLE: TRUE INDIE STORY NOMINATION ================= -->
+    <div class="slide-container" id="title-indie">
+        <div class="bg-decor"><i class="fa-solid fa-film bg-icon" style="left: 50%"></i></div>
+        <div class="sidebar-ui">
+            <div class="time-box">18:15</div>
+            <div class="level-indicator">BONUS</div>
+        </div>
+        <div class="scanlines"></div>
+        <div class="sponsor-bar">
+            <img src="sponsor logos/GCA_logo (1).png" alt="GCA"><img src="sponsor logos/Group 15.png" alt="Astana Hub"><img src="sponsor logos/GameDev Center белый (1).png" alt="GameDev Center"><img src="sponsor logos/OGAMES.svg" alt="OGAMES"><img src="sponsor logos/Логотип глобал гейм джем (1).png" alt="GGJ"><img src="sponsor logos/Mask group.png" alt="CIAQ"><img src="sponsor logos/SHU (1).PNG" alt="SHU"><img src="sponsor logos/cv_logo_white (1).png" alt="Creata Venture"><img src="sponsor logos/Borsyq Games Белый (1).png" alt="Borsyq"><img src="sponsor logos/145.jpg" alt="145" style="border-radius: 4px;"><img src="sponsor logos/Дизайн без названия (4).png" alt="Sponsor" style="border-radius: 4px;">
+        </div>
+        <div class="main-view">
+            <div class="nom-title-center">
+                <div class="nom-icon">🎬</div>
+                <div class="nom-tag">NOMINATION</div>
+                <div class="nom-name">TRUE INDIE<br>STORY</div>
             </div>
         </div>
     </div>
@@ -1024,6 +1237,26 @@
         </div>
     </div>
 
+    <!-- ================= TITLE: OUT OF BOX NOMINATION ================= -->
+    <div class="slide-container" id="title-outofbox">
+        <div class="bg-decor"><i class="fa-solid fa-lightbulb bg-icon" style="left: 50%"></i></div>
+        <div class="sidebar-ui">
+            <div class="time-box">18:20</div>
+            <div class="level-indicator">BONUS</div>
+        </div>
+        <div class="scanlines"></div>
+        <div class="sponsor-bar">
+            <img src="sponsor logos/GCA_logo (1).png" alt="GCA"><img src="sponsor logos/Group 15.png" alt="Astana Hub"><img src="sponsor logos/GameDev Center белый (1).png" alt="GameDev Center"><img src="sponsor logos/OGAMES.svg" alt="OGAMES"><img src="sponsor logos/Логотип глобал гейм джем (1).png" alt="GGJ"><img src="sponsor logos/Mask group.png" alt="CIAQ"><img src="sponsor logos/SHU (1).PNG" alt="SHU"><img src="sponsor logos/cv_logo_white (1).png" alt="Creata Venture"><img src="sponsor logos/Borsyq Games Белый (1).png" alt="Borsyq"><img src="sponsor logos/145.jpg" alt="145" style="border-radius: 4px;"><img src="sponsor logos/Дизайн без названия (4).png" alt="Sponsor" style="border-radius: 4px;">
+        </div>
+        <div class="main-view">
+            <div class="nom-title-center">
+                <div class="nom-icon">💡</div>
+                <div class="nom-tag">NOMINATION</div>
+                <div class="nom-name">OUT OF<br>BOX</div>
+            </div>
+        </div>
+    </div>
+
     <!-- ================= SLIDE 11: NOMINATION 3 - OUT OF BOX (18:20) ================= -->
     <div class="slide-container" id="nom-outofbox">
         <div class="sidebar-ui">
@@ -1059,6 +1292,26 @@
             <div class="winner-slot" style="border-color: var(--neon-cyan);">
                 <div class="winner-label">WINNER</div>
                 <div class="winner-name">[ TEAM NAME ]</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= TITLE: PUBLISHER'S CHOICE NOMINATION ================= -->
+    <div class="slide-container" id="title-publisher">
+        <div class="bg-decor"><i class="fa-solid fa-gem bg-icon" style="left: 50%"></i></div>
+        <div class="sidebar-ui">
+            <div class="time-box">18:25</div>
+            <div class="level-indicator">BONUS</div>
+        </div>
+        <div class="scanlines"></div>
+        <div class="sponsor-bar">
+            <img src="sponsor logos/GCA_logo (1).png" alt="GCA"><img src="sponsor logos/Group 15.png" alt="Astana Hub"><img src="sponsor logos/GameDev Center белый (1).png" alt="GameDev Center"><img src="sponsor logos/OGAMES.svg" alt="OGAMES"><img src="sponsor logos/Логотип глобал гейм джем (1).png" alt="GGJ"><img src="sponsor logos/Mask group.png" alt="CIAQ"><img src="sponsor logos/SHU (1).PNG" alt="SHU"><img src="sponsor logos/cv_logo_white (1).png" alt="Creata Venture"><img src="sponsor logos/Borsyq Games Белый (1).png" alt="Borsyq"><img src="sponsor logos/145.jpg" alt="145" style="border-radius: 4px;"><img src="sponsor logos/Дизайн без названия (4).png" alt="Sponsor" style="border-radius: 4px;">
+        </div>
+        <div class="main-view">
+            <div class="nom-title-center">
+                <div class="nom-icon">💎</div>
+                <div class="nom-tag">PUBLISHER'S CHOICE</div>
+                <div class="nom-name">BEST<br>GAME</div>
             </div>
         </div>
     </div>
@@ -1128,14 +1381,8 @@
         </div>
 
         <div class="main-view">
-            <h2 class="text-glow-cyan">TOTAL PRIZE POOL</h2>
+            <h2 class="text-glow-cyan" style="margin-bottom: 30px;">PRIZE DISTRIBUTION</h2>
 
-            <div style="border: 4px solid var(--neon-yellow); padding: 20px; background: rgba(0,0,0,0.7); width: 80%; text-align: center; box-shadow: 0 0 40px rgba(255, 240, 31, 0.2); margin-bottom: 30px;">
-                <div style="font-family: var(--text-mono); color: #aaa; font-size: 18px;">TOTAL CREDITS</div>
-                <div style="font-family: var(--text-pixel); font-size: 80px; color: var(--neon-yellow); text-shadow: 5px 5px 0 #b8860b;">
-                    900,000</div>
-                <div style="font-family: var(--text-mono); color: var(--neon-yellow); font-size: 24px;">KZT</div>
-            </div>
 
             <div style="display: flex; gap: 20px; width: 90%; justify-content: center;">
                 <!-- 2nd Place -->
